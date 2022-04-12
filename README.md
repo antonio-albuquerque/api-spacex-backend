@@ -5,8 +5,8 @@ Hey! We are stoked that you are interested in joining the team at Blue Onion Lab
 We have crafted the following test to see how you approach pulling and manipulating of data. We want to get a general idea of how you approach some common types of problems that we encounter here at Blue Onion (we are really proficient at integrations!)
 
 ## Background
-[spacexdata.com](https://docs.spacexdata.com/) provides an API to query attributes about SpaceX launches (https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/README.md). For this exercise we are going to be working with one resource in particular:
-- The [Starlink Schema](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/starlink/schema.md)
+[spacexdata.com](https://docs.spacexdata.com/) provides an API to query attributes about SpaceX launches (https://github.com/r-spacex/SpaceX-API/tree/master/docs#rspacex-api-docs). For this exercise we are going to be working with one resource in particular:
+- The [Starlink Schema](https://github.com/r-spacex/SpaceX-API/blob/master/docs/starlink/v4/schema.md)
 
 *For this exercise, no need to pull directly from the API as we have a pull of historical data here in this repo in the starlink_historical_data.json*
 
