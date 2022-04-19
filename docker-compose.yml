@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  database:
+    build: ./database 
+    # I'm building the image due to issues on running the PostGis image on arm64 arch envs. 
+    # More info: https://github.com/postgis/docker-postgis/issues/216
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - ${POSTGRES_PORT}:5432
