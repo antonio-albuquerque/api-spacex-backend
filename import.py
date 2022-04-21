@@ -10,12 +10,14 @@ with open("starlink_historical_data.json") as file:
         creation_date = position["spaceTrack"]["CREATION_DATE"]
         latitude = position["latitude"]
         longitude = position["longitude"]
+        satelite_id = position["id"]
 
         starlink_track = StarlinkTrackingHistory(
             creation_date=creation_date,
             latitude=latitude or 0,
             longitude=longitude or 0,
             location=f"POINT({longitude or 0} {latitude or 0})",
+            satelite_id=satelite_id,
         )
 
         session.add(starlink_track)

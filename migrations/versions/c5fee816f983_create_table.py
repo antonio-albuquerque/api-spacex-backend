@@ -45,7 +45,7 @@ def upgrade():
         postgresql_using="gist",
         postgresql_ops={},
     )
-    # ### end Alembic commands ###
+    ### end Alembic commands ###
 
 
 def downgrade():
