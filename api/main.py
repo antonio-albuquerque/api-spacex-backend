@@ -1,19 +1,16 @@
 from datetime import datetime
 from typing import Optional
+from zipapp import create_archive
 
 from fastapi import FastAPI
+from api.schema import NearestSatelite, Satelite
 from services.sevices import StartlinkService
 
 app = FastAPI()
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/satelites/{satelite_id}")
-def read_item(
+@app.get("/satelites/{satelite_id}", response_model=Satelite)
+def get_satelite_by_id(
     satelite_id: str,
     creation_date: Optional[str] = datetime.strftime(
         datetime.now(), "%Y/%m/%d %H:%M:%S"
@@ -28,6 +25,7 @@ def read_item(
 
         if last_known_location:
             return {
+                "id": last_known_location.StarlinkTrackingHistory.id,
                 "satelite_id": last_known_location.StarlinkTrackingHistory.satelite_id,
                 "creation_date": last_known_location.StarlinkTrackingHistory.creation_date,
                 "latitude": last_known_location.StarlinkTrackingHistory.latitude,
@@ -41,3 +39,19 @@ def read_item(
 
     else:
         return {"message": f"Satelite '{satelite_id}' not found."}
+
+
+@app.get("/satelites", response_model=NearestSatelite)
+def get_closest_satelite(
+    latitude: float,
+    longitude: float,
+    creation_date: Optional[str] = datetime.strftime(
+        datetime.now(), "%Y/%m/%d %H:%M:%S"
+    ),
+):
+    nearest_satelite = StartlinkService.get_nearest_satelite(
+        creation_date=creation_date,
+        latitude=latitude,
+        longitude=longitude,
+    )
+    return nearest_satelite
