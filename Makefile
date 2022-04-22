@@ -22,6 +22,7 @@ install: ## Install app dependencies
 	@docker-compose up -d || (echo "Could not create container $$?"; exit 1)
 	@pip install pipenv || (echo "Could not install pipenv $$?"; exit 1)
 	@pipenv install || (echo "Could not install pip dependencies $$?"; exit 1)
+	@pipenv shell
 	@echo 'Done!'
 
 runserver: ## Starts API web server

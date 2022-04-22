@@ -1,3 +1,45 @@
+# Code challenge for Blue Onion Labs
+
+This is a solution proposal for the take home test.
+
+## Installation - The task (Part 1 and 2)
+This project uses Python version `3.10.3`, Docker and docker-compose Make sure you have this installed:
+
+```
+python --version
+docker-compose --version
+docker --version
+```
+Create the .env file:
+```
+make conf-env
+```
+
+If you have a `.env` file in the project root, set the env vars and then install the database and all dependencies by running
+```
+make install
+```
+
+Run the database migrations:
+```
+make migrate
+```
+
+The data import script is `import.py`. You can also run it using make:
+```
+make import
+```
+
+Now you can finally run the API server `make runserver`
+
+-------------------------------------------------------------------------------
+## API - The task (Part 3 and 4)
+
+Acess the API swagger client in http://localhost:8000/docs
+
+Obs.: The query file is in `/sql` folder.
+
+-------------------------------------------------------------------------------
 # Blue Onion Labs Take Home Test
 
 Hey! We are stoked that you are interested in joining the team at Blue Onion Labs.
